@@ -26,3 +26,52 @@ equipesRouter.get("/equipes/:id", async(req, res) => {
     }
 });
 
+equipesRouter.post("/equipes", async(req, res) => {
+    const { nome, descricao } = req.body;
+
+    try {
+        await Equipe.create(
+            { nome, descricao }
+        );
+        res.status(201).json({message: "Equipe criada com sucesso!"});
+    }catch(err) {
+        res.status(500).json({message: "Um erro ocorreu ao adicionar equipe!"});
+    }
+});
+
+
+equipesRouter.put("/equipes/:id", async(req, res) => {
+    const idEquipe = req.params.id;
+    const { nome, descricao } = req.body;
+
+    try {
+        const equipe = await Equipe.findOne({ where: { id: idEquipe }});
+        if(equipe){
+            await equipe.update({ nome, descricao });
+            res.json({message: "Equipe atualizada com sucesso!"})
+        } else {
+            res.status(404).json({message: "Equipe não encontrada!"});
+        }
+    }catch(err) {
+        res.status(500).json({message: "Ocorreu um erro ao atualizar!"});
+    }
+});
+
+
+equipesRouter.delete("/equipes/:id", async(req, res) => {
+    const idEquipe = req.params.id;
+    
+    try {
+        const equipe = await Equipe.findOne({where: {id: idEquipe}});
+
+        if(equipe) {
+            await equipe.destroy();
+            res.json({message: "Equipe removida com sucesso!"})
+            
+        } else {
+            res.status(404).json({Message: "Equipe não encontrada!"})
+        }
+    }catch(err) {
+        res.status(500).json({message: "Um erro ocorreu ao excluir!"});
+    }
+});
