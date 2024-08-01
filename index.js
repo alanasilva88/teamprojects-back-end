@@ -11,11 +11,9 @@ authenticate(connection).then(() => {
   
 });
 
-
 const app = express();
 
-
-app.use(express.json()); 
+app.use(express.json());
 
 app.use(usuariosRouter);
 app.use(equipesRouter);
@@ -23,5 +21,5 @@ app.use(equipesRouter);
 
 
 app.listen(4000, () => {
-    console.log("Servidor rodando em http://localhost:4000/");
-  });
+  console.log("Servidor rodando em http://localhost:4000/");
+});
