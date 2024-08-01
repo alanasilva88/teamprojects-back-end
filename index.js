@@ -8,16 +8,10 @@ import express from "express";
 
 
 
-authenticate(connection)
-  .then(() => {
-    return connection.sync(); 
-  })
-  .then(() => {
-    console.log("Conexão com o banco de dados estabelecida e modelos sincronizados.");
-  })
-  .catch((error) => {
-    console.error("Erro ao conectar e sincronizar modelos:", error);
-  });
+authenticate(connection).then(() => {
+    connection.sync(); 
+  
+});
 
 
 const app = express();

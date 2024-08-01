@@ -14,7 +14,7 @@ export const Projeto = connection.define("projeto", {
         type: DataTypes.TEXT,
         allowNull: true
     },
-    data_incio: {
+    data_inicio: {
         type: DataTypes.DATEONLY, 
         allowNull: false 
     },
