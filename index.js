@@ -7,7 +7,6 @@ import { Usuario } from "./models/usuario.js";
 import express from "express";
 
 
-
 authenticate(connection).then(() => {
     connection.sync(); 
   
