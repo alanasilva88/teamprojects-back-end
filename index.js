@@ -1,4 +1,6 @@
 import { connection, authenticate } from "./config/database.js";
+import express from "express";
+import { json } from "sequelize";
 
 
 
@@ -11,6 +13,11 @@ const app = express();
 
 
 app.use(express.json()); 
+
+app.get("/hello", (requisicao, resposta) => { 
+    resposta.send("Hello World!"); 
+});
+
 
 
 
