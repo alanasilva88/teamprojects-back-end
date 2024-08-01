@@ -11,6 +11,6 @@ export const Usuario = connection.define("usuario", {
     email: { 
         type: DataTypes.STRING, 
         allowNull: false,
-        unique: true
+        unique: true
     }
 });
