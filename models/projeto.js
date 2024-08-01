@@ -1,21 +1,28 @@
 import { connection } from "../config/database.js";
 import { DataTypes } from "sequelize"; 
 import { Usuario } from "./usuario.js";
+ 
 
 
-export const Equipe = connection.define("equipe", {
+export const Projeto = connection.define("projeto", {
     
     nome: {
         type: DataTypes.STRING(130), 
         allowNull: false 
     },
     descricao: {
-        type: DataTypes.TEXT
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    data_inicio: {
+        type: DataTypes.DATEONLY, 
+        allowNull: false 
+    },
+    data_final: {
+        type: DataTypes.DATEONLY, 
+        allowNull: true
     }
 });
 
-Equipe.belongsToMany(Usuario, { through: "EquipeUsuario" });
-Usuario.belongsToMany(Equipe, { through: "EquipeUsuario" });
-
-Equipe.hasMany(Projeto, { onDelete: "CASCADE" });
-Projeto.belongsTo(Equipe);
+Projeto.belongsTo(Usuario, { onDelete: "CASCADE" });
+Usuario.hasMany(Projeto);

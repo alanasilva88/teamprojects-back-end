@@ -12,5 +12,10 @@ export const Usuario = connection.define("usuario", {
         type: DataTypes.STRING, 
         allowNull: false,
         unique: true
+<<<<<<< HEAD
     }
 });
+=======
+    }
+});
+>>>>>>> e31fefc665b57bf40e2fe997b507943382a923a3
