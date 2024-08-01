@@ -1,6 +1,7 @@
 import { connection } from "../config/database.js";
 import { DataTypes } from "sequelize"; 
 import { Usuario } from "./usuario.js";
+import { Projeto } from "./projeto.js";
 
 
 export const Equipe = connection.define("equipe", {
