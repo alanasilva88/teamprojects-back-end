@@ -1,19 +1,21 @@
 import { connection } from "../config/database.js";
-import { DataTypes } from "sequelize"; 
+import { DataTypes } from "sequelize";
 import { Usuario } from "./usuario.js";
 import { Projeto } from "./projeto.js";
 
-
-export const Equipe = connection.define("equipe", {
-    
+export const Equipe = connection.define(
+  "equipe",
+  {
     nome: {
-        type: DataTypes.STRING(130), 
-        allowNull: false 
+      type: DataTypes.STRING(130),
+      allowNull: false,
     },
     descricao: {
-        type: DataTypes.TEXT
-    }
-});
+      type: DataTypes.TEXT,
+    },
+  },
+  { timestamps: true }
+);
 
 Equipe.belongsToMany(Usuario, { through: "EquipeUsuario" });
 Usuario.belongsToMany(Equipe, { through: "EquipeUsuario" });
