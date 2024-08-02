@@ -11,4 +11,6 @@ export const Usuario = connection.define("usuario", {
     allowNull: false,
     unique: true,
   },
+}, {
+  timestamps: true 
 });

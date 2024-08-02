@@ -26,6 +26,7 @@ export const Tarefa = connection.define("tarefa", {
         type: DataTypes.DATEONLY, 
         allowNull: true 
     }
+},{timestamps: true 
 });
 
 
