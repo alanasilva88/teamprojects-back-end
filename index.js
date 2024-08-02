@@ -3,6 +3,7 @@ import express from "express";
 import { usuariosRouter } from "./routes/usuarios.js";
 import { equipesRouter } from "./routes/equipes.js";
 import { tarefasRouter } from "./routes/tarefas.js";
+import { projetosRouter } from "./routes/projetos.js";
 
 authenticate(connection).then(() => {
   connection.sync();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(usuariosRouter);
 app.use(equipesRouter);
 app.use(tarefasRouter);
+app.use(projetosRouter);
 
 app.listen(4000, () => {
   console.log("Servidor rodando em http://localhost:4000/");
