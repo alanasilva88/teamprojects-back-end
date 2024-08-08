@@ -7,6 +7,7 @@ import { projetosRouter } from "./routes/projetos.js";
 import { loginRouter } from "./routes/login.js";
 import { connectMongo } from "./config/mongoose.js"; // Importa a função de conexão com MongoDB
 import { registerRouter } from "./routes/register.js";
+import cors from "cors";
 
 // Conectando ao MongoDB
 connectMongo()
@@ -22,6 +23,8 @@ connectMongo()
 
         app.use(express.json());
 
+        app.use(cors({ origin: "http://localhost:5173" }));
+
         app.use(usuariosRouter);
         app.use(equipesRouter);
         app.use(tarefasRouter);
@@ -29,8 +32,8 @@ connectMongo()
         app.use(loginRouter);
         app.use(registerRouter);
 
-        app.listen(4000, () => {
-          console.log("Servidor rodando em http://localhost:4000/");
+        app.listen(3000, () => {
+          console.log("Servidor rodando em http://localhost:3000/");
         });
       })
       .catch((error) => {
