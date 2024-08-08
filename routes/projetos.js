@@ -31,10 +31,15 @@ projetosRouter.get("/projetos/:id", async(req, res) => {
 
 projetosRouter.post("/projetos", async(req, res) => {
     const { nome, descricao, data_inicio, data_final } = req.body;
+    
+    if (!data_inicio) {
+        return res.status(400).json({ message: "O campo 'Data de Início' é obrigatório!" });
+    }
 
+    console.log('Dados recebidos:', req.body);
     try {
         await Projeto.create(
-            { nome, descricao, data_inicio, data_final }
+            { nome, descricao, data_inicio, data_final: data_final || null }
         );
         res.status(201).json({message: "Projeto criado com sucesso!"});
     }catch(err) {
