@@ -4,6 +4,7 @@ import { Equipe } from "../models/equipe.js";
 import { Projeto } from "../models/projeto.js";
 import { Tarefa } from "../models/tarefa.js";
 
+
 export const usuariosRouter = Router();
 
 usuariosRouter.get("/usuarios", async(req, res) => {
