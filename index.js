@@ -10,8 +10,8 @@ import { registerRouter } from "./routes/register.js";
 import cors from "cors";
 
 // Conectando ao MongoDB
-connectMongo()
-  .then(() => {
+// connectMongo()
+  // .then(() => {
     // Conectar ao MySQL
     authenticate(connection)
       .then(() => {
@@ -39,7 +39,7 @@ connectMongo()
       .catch((error) => {
         console.error("Erro ao conectar com MySQL:", error);
       });
-  })
-  .catch((error) => {
-    console.error("Erro ao conectar com MongoDB Atlas:", error);
-  });
+  // })
+  // .catch((error) => {
+  //   console.error("Erro ao conectar com MongoDB Atlas:", error);
+  // });
